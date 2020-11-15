@@ -1,0 +1,536 @@
+%\documentclass[letterpaper, 12 pt, conference]{ieeeconf}  % Comment this line out
+                                                          % if you need a4paper
+\documentclass[a4paper, 12pt, conference]{ieeeconf}      % Use this line for a4
+                                                          % paper
+
+\IEEEoverridecommandlockouts                              % This command is only
+                                                          % needed if you want to
+                                                          % use the \thanks command
+\overrideIEEEmargins
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% This is needed to prevent the style file preventing citations from linking to 
+% the bibliography
+\makeatletter
+\let\NAT@parse\undefined
+\makeatother
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{footmisc}
+\newcommand*\linkcolours{ForestGreen}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{scrextend}
+\usepackage{times}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{breakurl}
+\def\UrlBreaks{\do\/\do-}
+\usepackage[breaklinks,pagebackref,colorlinks=false,
+linkcolor=black,
+filecolor=orange,      
+urlcolor=brown]{url,hyperref}
+%\usepackage{url,hyperref}
+\hypersetup{
+colorlinks,
+linkcolor=\linkcolours,
+citecolor=\linkcolours,
+filecolor=\linkcolours,
+urlcolor=\linkcolours}
+
+%\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{algcompatible,lipsum}
+\usepackage{caption}
+\usepackage[labelfont={bf},font=small]{caption}
+\usepackage[none]{hyphenat}
+
+\usepackage{mathtools, cuted}
+
+\usepackage[noadjust, nobreak]{cite}
+\def\citepunct{,\,} % Style file defaults to listing references separately
+
+\usepackage{tabularx}
+\usepackage{amsmath}
+
+\usepackage{float}
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
+\newcommand*\imgres{600}
+
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+%\usepackage{parskip}
+
+\usepackage[]{placeins}
+
+% \usepackage{epstopdf}
+% \epstopdfDeclareGraphicsRule{.tif}{png}{.png}{convert #1 \OutputFile}
+% \AppendGraphicsExtensions{.tif}
+
+\newcommand\extraspace{3pt}
+
+\usepackage{placeins}
+
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=0.8pt] (char) {#1};}}
+            
+\usepackage[framemethod=tikz]{mdframed}
+
+\usepackage{afterpage}
+\usepackage{stfloats}
+
+\usepackage{atbegshi}
+\newcommand{\handlethispage}{}
+\newcommand{\discardpagesfromhere}{\let\handlethispage\AtBeginShipoutDiscard}
+\newcommand{\keeppagesfromhere}{\let\handlethispage\relax}
+\AtBeginShipout{\handlethispage}
+\usepackage[export]{adjustbox} % loads also graphicx
+\usepackage{comment}
+
+\title{ \bf FULL RESPONSE TO REVIEWERS' COMMENTS\\
+\vspace{0.3in}
+New TITLE:\\
+\vspace{0.1in}
+SASSCAL WebSAPI: A Web Scraping Application Programming Interface to Enhance The SASSCAL Weathernet
+\vspace{0.4in}\\
+ORIGINAL TITLE:\\
+\vspace{0.1in}
+Enhancing Access and Making Use of SASSCAL’s Climatological Data: Analysis of Extreme Temperatures in the Okavango Delta
+}
+
+\author{Tsaone Swaabow Thapelo$^{*1}$,  Molaletsa Namoshe$^{2}$,  Oduetse Matsebe$^3$,\\
+Tshiamo Motshegwa$^4$, Mary-Jane Morongwa Bopape$^5$  \\
+%Department of Mechanical, Energy and Industrial Engineering$^{1,3,5}$\\
+	%Department of Mechanical, Energy, and Industrial Engineering $^{1,2,3}$\\
+	Botswana International University of Science and Technology$^{1,2,3}$\\
+	%	Department of Computer Science, 
+		University of Botswana$^4$\\
+			South African Weather Services, Pretoria, South Africa $^{5}$ \\
+		{*\color{black}Corresponding Author}: {\color{black}swaabow@gmail.com}
+}
+
+
+
+\setlength{\columnsep}{1cm}
+\newgeometry{layoutwidth  = 8.2500in,
+	layoutheight = 11.20in,
+	vmargin      = 00.50in, %Inches at top
+	hmargin      = 00.60in,
+	headheight   = 00.50in,
+	headsep      = 00.15in,
+	footskip     = 00.60in}
+\pdfpagewidth  = 8.2500in
+\pdfpageheight = 12.00in
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\onecolumn
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\section{Major revisions}
+	\label{Major}
+	\subsection{Overall Comments}
+	\noindent
+	 Both reviewers noted that the methods introduced in the paper require more detail and clarification. In specific, more detail is needed on how this proposed approach helps address problems in data access and data analysis for extreme temperature data. Also, one of the reviewers notes that the paper may be stronger by focusing on one of these two topics, instead of giving equal attention to both. In other words, the paper in its current form splits attention between 1) the automation of the data harvesting and mining approaches, and 2) the analysis of the extreme weather patterns. The authors might consider whether to give more attention to one of these topics, and reduce the emphasis on the other. For the purposes of the Data Science Journal, the data harvesting and mining topic is more salient. So the authors may consider adding more detail and clarification to that component, while using the analysis of extreme weather as an example of the benefits of having enhanced tools for data harvesting and mining.
+	 \subsubsection{\textbf{Response}}
+	 \label{Respo}
+	\emph{ We highly appreciate this comment; it helped in focusing the paper. We channeled our focus to the  automation of  data harvesting and data mining. We changed the title to: ``SASSCAL WebSAPI: A Web Scraping Application Programming
+		Interface to Enhance The SASSCAL Weathernet". The SASSCAL WebSAPI was developed using the R open-source statistical computing platform. The toolkit integrates web scraping, data wrangling and dashboard  techniqes to bridge the gap between the SASSCAL Weather data and the end users. This toolkit is particularly useful
+		for any end user interested in using the SASSCAL weather data freely available online. The toolkit allows end users to efficaciously select the desired weather values from the SASSCAL weathernet.\\
+		 It reduces
+		the risk of human error, and the researcher's effort of
+		generating data sets for research purposes.  We deployed the proposed SASSCAL WebSAPI to analysise  patterns of average temperatures  to demonstrate the value  of having enhanced tools for data harvesting and data mining.}
+		
+			\section{Minor Revisions: Reviewer A}
+	\subsection{\textbf{Reviewer A:} Abstract}
+	The abstract seems to have elements of originality. However, some details such as which data science techniques were used to generate the data sets are missing. Hence, it is not easy to tell the originality.
+	
+	\subsubsection{\textbf{Response}}
+	 \emph{We modified the abstract by adding some more details on the data science techniques as also articulated herein section \ref{Respo}.}
+	
+	\subsection{\textbf{Reviewer A:} Methodology}
+	The method is not discussed at all. Machine learning and or data science techniques not mentioned
+	
+	\subsubsection{\textbf{Response}}
+\emph{We rewrote this section (see section III of the paper), focusing on the data science techniques deployed in the development of the SASSCAL WebSAPI toolkit. We partitioned this section into four: (1) the study area; (2) data; (3) tools and methods; and (4) Dashboard Design for the graphical user interface. We removed the Machine Learning term since we are no longer focusing on model building in this modified version of the paper. We presented a detailed technical pipeline proposed for  the data science methodology deployed in this project using the data science techniques mentioned in section \ref{Respo}. }
+
+	\subsection{\textbf{Reviewer A:} Clarity}
+	Clear but only missing the necessary details
+	\subsubsection{\textbf{Response}}
+	\emph{To clarify the content of the paper, we modified the title to be more focused to (1) the problem of data access and (2) the solution in the form of an graphical user interface application to bridge the gap. We separated the Literature section from the Introduction section. }
+	
+	\subsection{Other Comments}
+	\begin{enumerate}
+		\item \textbf{Reviewer A:} The abstract does not however at the end state how the API has solved the problem.
+			\begin{itemize}
+			\item \emph{\textbf{Response}: We rewrote the abstract to emphasise the contribution of the work, which is an open-source application programming interface that extends the functionalities of the SASSCAL Weathernet. That is, the abstract now also emphasise how the SASSCAL WebSAPI enhances the efficacious extraction of desired weather data, leading to efficient and fast way of generating research data sets. }.
+		\end{itemize}
+		
+		\item \textbf{Reviewer A:} In the introduction, the problem is wel articulated, stating challenges in accessing the information due to its complexity and the limited amount of information. 
+		\begin{itemize}
+			\item \emph{\textbf{Response}: We appreciate the compliment. We also add Figure 2 to the introduction to illustrate the manual process of  extracting data from the SASSCAL weathernet}.
+		\end{itemize}
+	
+		\item \textbf{Reviewer A:} Also, ``relative humidity is more influential in determining maximum air temperature" seems to be out of context since it does not in any way relate to the accessibility of the information. 
+		\begin{itemize}
+		\item \textbf{\emph{Response}}: This statement was discarded since it nolonger fits in the current focus of the paper.
+	\end{itemize}
+
+	\item \textbf{Reviewer A:}	Finally, since your method is based on data science, and being applied to existing data, it is not clear how the need for collaboration arises. 
+	
+	\begin{itemize}
+		\item \emph{\textbf{Response:}} \emph{Our method is based on data science and online public data. We refer this point to Reviewer B's comment: ``With its scope on climate extreme analysis in data scarce regions, the paper addresses an important issue in environmental research that needs proper attention by both scientists and decision makers".}
+	\end{itemize}
+	
+	\item  \textbf{Reviewer A:} It is also important to list which hidden patterns were revealed ...
+		\begin{itemize}
+		\item \textbf{\emph{Response}}:
+		\emph{We used violin/Box-plots to extract the hidden shapes of the distributions of average temperature values. We kept  Figure	7 to visualise the data distributions and pattern of  daily average temperature values at the Shakawe AWS for the year 2015, with the year be selected at random for demonstrations. The goal was to investigate the variations (i.e., peaks) in
+			the data; determining whether the temperature values were
+			clustered around the median, the minimum or the maximum and how the values varied across the year.}
+	\end{itemize}
+	
+	
+	\item \textbf{Reviewer A:} and in the results, inform the user about how the study improved accessibility.
+	
+	\begin{itemize}
+		\item \emph{\textbf{Response}}: \emph{We modified the Results section, and added two figures (Figure 5 and Figure 6) to demonstrate how the end user can use this toolkit for enhanced accessibility to  the desired data from the SASSCAL weathernet.}
+	\end{itemize}
+	
+	
+
+	\end{enumerate}
+	
+	\section{Minor Revisions: Reviewer B}
+	
+	\subsection{\textbf{Reviewer B:} Brief summary}
+	 Given the fact that there is a huge need in climatological data for Southern Africa in order to assess recurrent climatic extremes and its implication for natural and human systems, the paper presents an approach to easily access and utilize climate data for the analysis of temperature extremes. The authors introduce a technology to harvest climate data from an existing online platform, the SASSCAL Weathernet, which was developed to provide near real-time data and to use them for analyzing climate extremes in the Okavango Delta. For this purpose, the paper authors scripted a data harvesting tool providing climate data for a preferred station and temporal resolution. The harvested data from stations Tubu and Shakawe were statistically analyzed by introducing the RF model in order to detect climatic phenomena in data sets. Based on a comprehensive literature review and the described method, the authors present results for the two stations showcasing average daily temperatures, daily maxima and relate this to other atmospheric parameters. Based on their findings confirming the extreme maxima and their potential determinants, the authors also reveal the limitations of only using 2 data sets. Based on their methodological approach and data analysis, the authors conclude that the developed methodological approach was successfully applied to underpin the relevance of the analysis of extremes in the context of human and environmental health, agricultural productivity and trend analysis. \\
+	 \\
+	 With its scope on climate extreme analysis in data scarce regions, the paper addresses an important issue in environmental research that needs proper attention by both scientists and decision makers, in particular in water stressed regions in southern Africa. Even though the paper refers to some technically and scientifically interesting aspects such as automated data harvesting, automated data analysis, integrated analysis of climate parameters and trends as well as climate extremes assessments, I suggest that the paper should not be published in its current form. I am not entirely convinced by the overall scientific value of the presented methods, results and their interpretation, nor if the paper does provide a substantial scientific contribution within the perspective of the aims and scope of the journal in its present form. In my opinion it is not clear whether the authors want to focus on the methodology regarding the rather automated data harvesting, mining and analysis leading to the identification of extremes or on the interpretation of the extremes in the context of the climate and climate change in the Okavango Delta.
+	 
+	\subaubsection{\textbf{Response}:}
+\emph{We re-wrote the paper to make some necessary clarifications as indicated in Part \ref{Respo}. Our paper focused on the   automated  data  harvesting toolkit, while the data mining  and  analysis was given as an example to illustrate the applicability of the proposed toolkit.}
+	
+
+	\subsection{\textbf{Reviewer B:} Methodology}
+With its scope on climate extreme analysis in data scarce regions, the paper addresses an important issue in environmental research that needs proper attention by both scientists and decision makers, in particular in water stressed regions in southern Africa. Even though the paper refers to some technically and scientifically interesting aspects such as automated data harvesting, automated data analysis, integrated analysis of climate parameters and trends as well as climate extremes assessments, I suggest that the paper should not be published in its current form. I am not entirely convinced by the overall scientific value of the presented methods, results and their interpretation, nor if the paper does provide a substantial scientific contribution within the perspective of the aims and scope of the journal in its present form. In my opinion it is not clear whether the authors want to focus on the methodology regarding the rather automated data harvesting, mining and analysis leading to the identification of extremes or on the interpretation of the extremes in the context of the climate and climate change in the Okavango Delta.
+	\\
+	\\
+	Using CRISP as data mining approach is valid, however, limited in its representation when only used for two stations. In order to identify a complex spatio-temporal pattern of extremes and their controls including more stations would be required. A method to analyze the pattern of extremes, their intensity, magnitude and frequency in the context of meteorological phenomena is not presented. Therefore, extremes are only described and causal connections are not addressed sufficiently. No validation approach, e.g. the comparison with other areas, was presented.\\
+	   \begin{itemize}
+       \item 	It also needs to be noted that methodological aspects are described in the results section.
+   \end{itemize}
+   
+	\subsubsection{\textbf{\emph{Response}}}
+	\emph{The methodological aspect referred to here no longer fits in the current scope of the paper, so it was excluded. We constrained the focus to the data access and visualisation, and reduced the focus on the analysis of the meteorological phenomena under monitoring.}
+	
+
+	
+
+\subsection{\textbf{Reviewer B:} Clarity}	Many of the given information and interpretation are rather vague, partly misleading and often not scientifically based or properly cited. Some selected examples can be found in the other comments section below. Given these examples and many others, I come to the conclusion that some of the results are overstated in terms of its relevance for climate extreme analysis taking the presented data and methods into account.
+	
+	\subsubsection{\textbf{Response}}
+    \emph{	We reviewed the paper, corrected the ambiguous statements and cited the appropriate sources. We focused on the data harvesting aspect of the project rather than its relevance for climate extreme analysis.}
+	
+	\subsection{Other Comments}
+
+\begin{enumerate}
+	\item  \textbf{Reviewer B:} In addition, the paper has some notable formal and structural weaknesses. The manuscript does not follow a consistent structure which makes it difficult to read.
+	\begin{itemize}
+		\item \emph{\textbf{Response}: We restructured our paper into six sections: (1) Introduction, (2) Related Literature Review, (3) Methodology, (4) Results, (5) Discussions, (6) Conclusions, (7) Recommendations, and (8) Future Work}. The citation style is kept simple since it can always be tuned easily using the .Bib file for references.
+	\end{itemize}
+	
+	\item \textbf{Reviewer B:}  The title refers to the data from a particular source and its utilization but also refers to an analysis of extremes.
+	\begin{itemize}
+		\item  \emph{\textbf{Response}: The titled was modified (see section \ref{Respo}).}
+	\end{itemize}
+
+	\item The abstract is strongly focusing on the problem rather providing oversight on the main methodology and results. Thus, the abstract is less informative and appears as an unconsolidated and less structured mix of a description of the problem, some methodological aspects and some overall unjustified statements regarding data science, interrelations between climate parameters and collaboration. E.g. the word extreme is not even mentioned. I suggest to re-write in order to reflect the essence of the paper and its scientific/technical value.
+	\begin{itemize}
+		\item 	 \emph{\textbf{Response}:We modified the abstract to present the problem, then we motivated the methodology by articulating  the data science techniques  used in the development of the API as articulated herein section \ref{Respo}.}
+	\end{itemize}
+
+	\item \textbf{Reviewer B:}  The introduction addresses very important aspects in terms of accessibility of data in the region as well as sets the background for the necessary of data harmonization, but there is no direct linkage between the data component and the analytical component. For example, the quality issue for accurate and reliable assessments is not even mentioned, nor techniques or approaches to overcome such. I suggest to re-write the intro section and provide the background information for both main components of the study.
+	\begin{itemize}
+		\item \textbf{\emph{Response}}: \emph{We re-worked the introduction section to link  the data component and the analytical component as it can be appreciated in Figure 2.}
+	\end{itemize}
+
+	\item \textbf{Reviewer B:} The literature review tries to provide additional information on the analysis of climate data but reads like a collection of articles from all over the world and somehow referring to the topic. While a few cited studies provide indeed feedback, other references are not clear (e.g. studies reporting mortality cases in Asia or Australia.). I suggest to re-write the section and focus on those articles directly contributing to the methodological or analytical part of the study.
+		\begin{itemize}
+		\item \textbf{\emph{Response}}: \emph{We added the section for related  literature review, citing only those publications motivating this work.}
+	\end{itemize}
+
+	\item  \textbf{Reviewer B:} The methodology section provides the background for the study area, the data harvesting component scripting and the data mining. In my opinion, the section is incomplete, and the VIP method as described in the results section should be incorporated here. This section also allows for discussing the limits of methodological approaches. It should further provide some information how data quality was assured. The application of open source technology and its implementation could be stronger highlighted.
+	\begin{itemize}
+		\item \textbf{\emph{Response}}: \emph{We articulated this section further. The description of the VIP method was omitted (i.e., out of the current scope). The limits of the current approach are presented in the discussion section.}
+	\end{itemize}
+	
+	
+	\item \textbf{Reviewer B:}  I also do not see why reference is given to entire Botswana while the study focuses on the far NW of Botswana only. 
+	\begin{itemize}
+		\item \textbf{\emph{Response}}: \emph{For illustration purposes, the API  was  tested by extracting  data from  the Shakawe AWS in the North West (Okavango Delta) of Botswana. Then visualising the data using the SASSCAL WebSAPI.}
+	\end{itemize}
+	
+	\item \textbf{Reviewer B:}  I would expect some background for meteorological pattern, atmospheric, climate controls, role of climate extremes in the study area, microclimates etc. Presenting the script in this section underpins the impression that the paper rather addresses the data analytical part than the successful data harvesting.
+	\begin{itemize}
+		\item \textbf{\emph{Response}}: \emph{ The background for meteorological pattern, atmospheric, climate controls, role of climate extremes ia currently beyond the scope of the paper. The main focus is on the harvesting and visualisation of data.}
+	\end{itemize}
+
+	\item \textbf{Reviewer B:}  The result section presents some main findings extracted from the data sets with a strong focus on only one station. In my opinion, the section represents similar findings with different techniques. Also, the description of the annual maxima is interesting but lengthy.   An additional column in Table one would minimize the lengthy text.
+	
+		\begin{itemize}
+		\item \textbf{\emph{Response}}: \emph{This is currently beyond the scope of the paper.}
+	\end{itemize}
+	
+	 
+\item \textbf{Reviewer B:}  The presentation of the violin plots as well as the ridgeline plots is an interesting approach to showcase temperature dynamics. However, it only reflects one year at one particular station and the value of this information for understanding spatio-temporal patterns is limited. 
+\begin{itemize}
+	\item \emph{\textbf{Response:} For demonstration purposes, we use data from one station: Shakawe, and we constrain the data sample to one year (2015). Ridgeline plots were omitted to reduce the scope of demonstrations. In future, we will extend this to multiple stations as highlighted in the future section of the paper. }
+\end{itemize}
+
+\item \textbf{Reviewer B:}  The presentation of determinants is very interesting, but I would prefer to overcome the limitations by using only data from one location and period.
+
+\begin{itemize}
+	\item \emph{\textbf{Response:} The presentation of determinants was left out of the scope. }
+\end{itemize}
+
+\item \textbf{Reviewer B:}  A multivariate analysis would be providing more insights into related dependencies.
+	\begin{itemize}
+		\item \emph{\textbf{Response:}} \emph{We appreciate the suggestion. We will include  this point in the future directions of this work.}
+	\end{itemize}
+
+
+	\item  \textbf{Reviewer B:}  The discussion session starts with a repetition of the problem statement and the provided solution. However, the approach and the implications for users are not really discussed or put in context. The discussion of the data analysis is also more or less confirming the results but no causal linkage are discussed or reasons provided, nor is the methodological approach discussed (if this is the main focus of the paper). 
+	
+	\begin{itemize}
+		\item \textbf{\emph{Response}}: \emph{We rewrote the discussion section to restate the problem, the API and the data analysis approach used  for illustrations.  We also discussed the limitations of the approach  proposed in this work.}
+	\end{itemize}
+	
+	\item \textbf{Reviewer B:}  I would prefer to understand dependencies based on atmospheric conditions and meteorological dynamics. 
+\begin{itemize}
+	\item \textbf{\emph{Response}}: This is currently beyond the scope of the paper.
+\end{itemize}
+
+\item \textbf{Reviewer B:}  Some statements are also vague (see below) and do not necessarily assist in understanding the causes for the described relationships. The conclusion is not providing the take home message at scientific and/or technical level, thus should be re-written.
+	\begin{itemize}
+		\item  \emph{\textbf{Responce}: The SASSCAL WebSAPI aims to create new channels to
+			extend services of the SASSCAL weathernet. The toolkit
+			facilitates end users to efficaciously access and extract
+			weather data from the SASSCAL weathernet. Web scraping
+			and data wrangling techniques were used to automatically
+			generate weather data sets. A Shiny dashboard was developed
+			to visualise and disseminate outputs to end users. The toolkit
+			increases productivity, efficiency and quality of projects that
+			make use of data from SASSCAL?s AWSs. This reproducible
+			toolkit is valuable for researchers and analysts who seek
+			to integrate the SASSCAL weather data in their projects.
+			For illustrations, we deployed the toolkit in a case study to
+			present new statistical analyses of extreme temperatures in
+			the Okavango Delta. By deploying techniques from climate
+			informatics, the toolkit will catalyse many other research
+			projects (i.e., in the analysis of heat waves soil erosivity
+			and erosivity density). This work is an open source R based
+			toolkit that is free for public use and contribution.}	
+		
+\end{itemize}
+
+\item \textbf{Reviewer B:}  The recommendation section highlights the need for smart and open source technology to access data from various sources which I think should be addressed. However, I would suggest to be more specific and concrete how such technology can add value to science, decision making and other communities.
+
+		\begin{itemize}
+		\item \emph{\textbf{Response:}} \emph{We worked out the recommendation section to motivate and encourage the application of open-source technologies to make
+			use of weather and climate data that is normally archived
+			and left under utilised, especially in developing regions like
+			Africa. More end user-driven functionalities will be added
+			to this API to: (1) improve the user interface to enhance
+			access mechanisms to the SASSCAL weathernet; (2) monitor
+			the research data be accessed; and (3) investigate strategies
+			for imputation of missing weather data using the historical
+			SASSCAL weather data. }
+	\end{itemize}
+ 
+ \item 	\textbf{Reviewer B:}  Future work provides a rather general outlook. The authors may consider to be more specific also in reflection of the outcomes of this study. The section is also limited to the data representation and does not address the data analysis component, i.e. how can extremes better be captured and explained which would be a requirement for e.g. forecasting.
+ 
+\begin{itemize}
+	 \item  \emph{\textbf{Response:}} 
+	\emph{The analysis and visualisation of
+		SASSCAL weather data for multiple AWSs will be conducted
+		to capture the spatial-temporal resolutions of various weather
+		parameters to enhance the understanding of relationships
+		between the collected weather variables at local stations.}
+\end{itemize}
+	
+
+	\item  \textbf{Reviewer B:} To my opinion, the paper is written in somewhat complicated English and refers to terminology which might mislead the reader and is difficult to understand and sometimes subjective. Examples such as `access ... is not trivial; (pg 1, abstract); the role of `data science` in this study (pg 1, abstract); `local wind observations were found to be influential' (pg2, Literature Review); `the analysis of maximum air temperature is very necessary, more ..., since they are considered to be influential to heat waves' (pg 7, A. Implications..) can be find throughout the text.
+	\begin{itemize}
+		 \item  \emph{\textbf{Response:}} 
+		\emph{We reworked the  paper  to remove ambiguous words like ``trivial", ``influential" and ``implication". }
+	\end{itemize}
+	
+
+  \item \textbf{Reviewer B:} 	The data provided are from a platform which is correctly branded named SASSCAL WeatherNet.
+   \begin{itemize}
+   	\item \emph{\textbf{Response}: We agree with this point.}
+   \end{itemize}
+
+  \item \textbf{Reviewer B:}  The machine learning reference in the abstract is somewhat overstated. 
+
+  	 	\begin{itemize}
+  		\item \textbf{\emph{Response}}: \emph{This  machine learning reference was discarded since it no longer fits in the current focus of the paper.}
+  	\end{itemize}
+  
+
+  \item \textbf{Reviewer B:}  When describing causal relationships (e.g. humidity vs max temp) underlying physical and atmospheric principles should be addressed. What is the dependent variable and why? (throughout the manuscript). 
+ 	\begin{itemize}
+ 	\item \textbf{\emph{Response}}: \emph{This statement was discarded since it no longer fits in the current focus of the paper.}
+ \end{itemize}
+
+  \item \textbf{Reviewer B:}  Only cite other work when there is a direct link to the study (relevance of studies in Chicago??). Also, link SASSCAL-generated publications to the system, not secondary sources (e.g. Lit [5].
+ 	 	\begin{itemize}
+ 	\item \textbf{\emph{Response}}: \emph{We appreciate the feedback. We reduced the reference list from 58 to 24 to keep only those with direct influence on this work. }
+ \end{itemize}
+ 	
+
+  \item \textbf{Reviewer B:}  Define `hyper-localised' - Statement in the literature review `Thus, knowledge ...' [44] needs to be clarified or deleted.
+  	\begin{itemize}
+  	\item \textbf{\emph{Response}}: Hyper-localised describes extremely localised. The statement ``Thus, knowledge was deleted.
+  \end{itemize}
+
+
+  \item \textbf{Reviewer B:}  Results section Table 1: Why only data from Shakawe?  Identifying three years out of a five years? period as the warmest is not providing any information. 
+   \begin{itemize}
+  	\item \emph{\textbf{Response:}} \emph{Shakawe was chosen for demonstration purposes of the API. However, the table referred to here was omitted since it was out of the current scope of the paper.}
+  \end{itemize}
+
+   
+   \item \textbf{Reviewer B:}  Fig3: legend missing. It should also be stated in the table caption that the data for the Shakawe station. 
+ 	\begin{itemize}
+  	\item \textbf{\emph{Response}}: \emph{We appreciate the note. We modified this   caption, and we now present it in Figure 7 to show the daily distribution of the average air temperature for the Shakawe AWS from January to December in 2015.}
+  \end{itemize}
+
+  \item \textbf{Reviewer B:}  Additional value of the Fig 4 should be highlighted 
+  \begin{itemize}
+  	\item \emph{\textbf{Response} The figure referred to here  does not fit in the current focus of the paper.}
+  \end{itemize}
+
+  
+  \item \textbf{Reviewer B:}  Move VIP description into the methods section. 
+  	\begin{itemize}
+  	\item \textbf{\emph{Response}}: \emph{This statement was discarded since it no longer fits in the current focus of the paper.}
+  \end{itemize}
+
+  \item \textbf{Reviewer B:}  Fig 5 and 6 should be merged and all scales should be aligned for comparison purposes. 
+   \begin{itemize}
+  	\item \emph{\textbf{Response:} These two figures are beyond the current scope of this paper.}
+    \end{itemize}
+  
+  \item \textbf{Reviewer B:}  Also Shakawe should be included for comparison and  a rather spatial interpretation.
+   \begin{itemize}
+  	\item \emph{\textbf{Response:} Spatial interpretation of the meteorological patterns is beyond the current scope of the paper. This may be considered in future work.}
+
+  \end{itemize}
+  
+  \item  \textbf{Reviewer B:}  Numbering Fig 5A and B and 6 C and D does not make sense.  Seasons have to be defined (rain season, hydrological year???). 
+   \begin{itemize}
+  	\item \emph{\textbf{Response:} The two figures and their descriptions are beyond the current scope of this paper.}
+    \end{itemize}
+  
+ 
+
+  \item \textbf{Reviewer B:}  Fig 7 and 8 should be merged and all scales should be aligned for comparison purposes. 
+   \begin{itemize}
+  	\item \emph{\textbf{Response:} These two figures are also beyond the current scope of this paper.}
+    \end{itemize}
+  
+  
+
+  
+  \item \textbf{Reviewer B:}  Numbering Fig 7A and B and 8 C, D, E and F does not make sense. 
+  \begin{itemize}
+  	\item \emph{\textbf{Response:} These  figures are beyond the current scope of this paper.}
+    \end{itemize}
+  
+  
+  
+  \item \textbf{Reviewer B:}  Scale in Fig 8C (y-axis) not correct.
+    \begin{itemize}
+  	\item \emph{\textbf{Response:} These two figures are beyond the current scope of this paper.}
+    \end{itemize}
+  
+ 
+  
+  \item \textbf{Reviewer B:}  In discussions, table 1 is referred to as confirming trends in increasing max temp.
+   \begin{itemize}
+  	\item \emph{\textbf{Response:} The table referred to here was omitted since it was out of the current scope of the paper.}
+  	
+  \end{itemize}
+  
+  
+  \item \textbf{Reviewer B:}  Results of this study cannot confirm any trends since time series are too short. 
+   \begin{itemize}
+  	\item \emph{\textbf{Response:}} The result section was reworked, and the use of the word ``trend" was avoided.
+  \end{itemize}
+  
+  
+  
+  \item \textbf{Reviewer B:}  In discussion: , the mean temperature increases from 23.1 to 21.6? ??? Please correct.
+  
+    \begin{itemize}
+  	\item \emph{\textbf{Response:} We appreciate the note. Meanwhile, the paragraph containing this statement is no longer relevant, hence it was omitted.}
+  \end{itemize}
+
+  \item \textbf{Reviewer B:} Paper [3] does not represent the WMO, authors represent national weather authorities in Germany, Angola, Zambia, Botswana etc. 
+   \begin{itemize}
+  	\item \emph{\textbf{Response:}  WMO does not form part of the context under discussion herein, and Paper [3] mentioned here no lover forms part of the reference list.} 
+  \end{itemize}
+
+  \item \textbf{Reviewer B:}  The statement `These results indicate?.on year to year basis' is confusing since no trend is evident (based on the 5 year period) and variability in climate is inherent. 
+  \begin{itemize}
+  	\item \emph{\textbf{Response:}}
+  	\emph{The statement referred to here is out of the current scope of the paper.}
+  \end{itemize}
+
+  \item \textbf{Reviewer B:}  Placement of Section A under V. Discussions not clear. Also, the statements are rather vague, i.e. how can findings improve early warning and how can the findings be used for ?policy formulation and appropriate response strategies?. Be specific if there is an example. Also, in this section the authors refer to the limitation of the 5 year data set which does not allow for a statement on trend as done above. 
+ 	\begin{itemize}
+	\item \textbf{\emph{Response}}: This section referred to in here no longer fits the scope of this current version.
+	%was discarded since it no longer fits in the current focus of the paper.
+\end{itemize}
+
+  \item \textbf{Reviewer B:}  Future work sections need to be `word-wrapped'
+   \begin{itemize}
+  	\item \emph{\textbf{Response:}}
+  	\emph{The future work section was  `word-wrapped', providing more specific directions in reflection of the outcomes of this study. Besides the data representation, we also  addressed the data analysis component, i.e. how can extremes better be captured and explained using violin plots.}
+  \end{itemize}
+
+  \item \textbf{Reviewer B:}  Reference list needs to be revised, since some references are not complete, e.g. [3], [4], [5], [6] do not include a journal or book reference.
+  \begin{itemize}
+  	\item \emph{\textbf{Response}:} \emph{The reference list was revised, and the incomplete references were completed.}
+  \end{itemize}
+\end{enumerate}
+	
+
+
+
+%\bibliographystyle{ieeetr}
+%\bibliography{MiBib}
+%\clearpage
+\end{document}
